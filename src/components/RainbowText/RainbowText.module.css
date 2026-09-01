@@ -1,0 +1,31 @@
+.letter {
+  display: inline-block;
+  animation: letter-cycle 2.4s linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes letter-cycle {
+  0% {
+    color: var(--retro-cyan);
+    text-shadow: 0 0 6px var(--retro-cyan);
+  }
+  33% {
+    color: var(--retro-magenta);
+    text-shadow: 0 0 6px var(--retro-magenta);
+  }
+  66% {
+    color: var(--retro-yellow);
+    text-shadow: 0 0 6px var(--retro-yellow);
+  }
+  100% {
+    color: var(--retro-cyan);
+    text-shadow: 0 0 6px var(--retro-cyan);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .letter {
+    animation: none;
+    color: var(--retro-magenta);
+  }
+}

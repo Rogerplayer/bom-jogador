@@ -1,7 +1,54 @@
 :root {
-  font-family: system-ui, sans-serif;
-  line-height: 1.5;
-  color-scheme: light dark;
+  font-family: var(--font-pixel);
+  line-height: 2;
+  color-scheme: dark;
+
+  /* Identidade "retro gamer": fonte pixel em todo o site (não só nos
+     títulos). Não fixamos font-size em px no :root — isso quebraria o
+     zoom/preferência de fonte do navegador do usuário (acessibilidade).
+     A Press Start 2P é bem larga/quadrada por caractere, então
+     compensamos com line-height maior e tamanhos generosos em cada
+     componente, em vez de encolher a base. */
+  --font-pixel: 'Press Start 2P', ui-monospace, monospace;
+  --retro-cyan: #2fd0ff;
+  --retro-magenta: #ff2fb0;
+  --retro-yellow: #ffd23f;
+  --retro-bg-deep: #050608;
+  --retro-bg-glow: #2a0f4a;
+
+  /* Cor primária/link do Bulma alinhada ao ciano da identidade retro.
+     O Bulma pré-calcula a cor de contraste ("invert") assumindo a cor
+     original dele; como nosso ciano é claro, forçamos o invert pra um
+     azul bem escuro (texto legível em cima do ciano), em vez de deixar
+     o cálculo padrão escolher errado. */
+  --bulma-primary-h: 193deg;
+  --bulma-primary-s: 100%;
+  --bulma-primary-l: 55%;
+  --bulma-primary-invert-l: 12%;
+
+  --bulma-link-h: 193deg;
+  --bulma-link-s: 100%;
+  --bulma-link-l: 55%;
+  --bulma-link-invert-l: 12%;
+
+  /* Escala tipográfica compartilhada — todo componente deve usar essas
+     variáveis em vez de valores fixos, para que um ajuste de acessibilidade
+     futuro seja uma mudança num lugar só, não em cada .module.css. */
+  --fs-2xs: 0.75rem;
+  --fs-xs: 0.85rem;
+  --fs-sm: 0.95rem;
+  --fs-base: 1.05rem;
+  --fs-lg: 1.2rem;
+  --fs-xl: 1.4rem;
+  --fs-2xl: 1.6rem;
+}
+
+/* App fixado em dark mode, com tom azul-arroxeado (não cinza/preto
+   neutro): o Bulma deriva fundo, bordas e texto do dark mode a partir de
+   --bulma-scheme-h/-s, então só precisamos trocar o matiz/saturação. */
+[data-theme='dark'] {
+  --bulma-scheme-h: 250deg;
+  --bulma-scheme-s: 35%;
 }
 
 *,
@@ -13,14 +60,24 @@
 body {
   margin: 0;
   min-height: 100vh;
+  background: radial-gradient(circle at 50% -10%, var(--retro-bg-glow) 0%, #12061f 45%, var(--retro-bg-deep) 100%)
+    fixed;
 }
 
-.game-card {
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.game-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.2);
+/* Scanlines de CRT sutis por cima do site inteiro, não só da tela de
+   detalhes — é a "moldura" visual que amarra todas as telas. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.035) 0px,
+    rgba(255, 255, 255, 0.035) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
 }

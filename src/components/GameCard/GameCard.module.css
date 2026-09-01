@@ -1,0 +1,84 @@
+/* 5 cards por linha no desktop — o Bulma só tem frações de 12 (is-3 = 4
+   por linha), então sobrescrevemos a largura da coluna direto em vez de
+   usar uma classe is-*-desktop dele. O !important é necessário aqui: o
+   Bulma aplica a largura do tablet (is-4-tablet, 3 colunas) via seletor
+   de DUAS classes (`.column.is-4-tablet`), que tem especificidade maior
+   que a nossa classe única — e essa regra dele vale a partir de 769px
+   sem limite superior, então continuaria "ganhando" no desktop também. */
+@media (min-width: 1024px) {
+  .column {
+    flex: none !important;
+    width: 20% !important;
+  }
+}
+
+.card {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  background: rgba(5, 6, 8, 0.65);
+  border: 2px solid rgba(47, 208, 255, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* Card e imagem com altura previsível, título limitado a 2 linhas —
+   assim todos os cards da mesma fileira ficam com a mesma altura,
+   independente do tamanho do nome do jogo. */
+.card :global(.card-image) {
+  flex: none;
+}
+
+.card :global(.card-content) {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Glow ciano/magenta + leve zoom, lembrando o destaque de tile em menus
+   de console (PS5) com a paleta neon da identidade retro do app. */
+.card:hover {
+  transform: translateY(-6px) scale(1.03);
+  filter: brightness(1.08);
+  border-color: var(--retro-cyan);
+  box-shadow:
+    0 0 0 2px var(--retro-cyan),
+    0 0.75em 1.5em -0.25em rgba(255, 47, 176, 0.45);
+}
+
+/* object-fit: cover — o Bulma só força largura/altura 100% em imagens
+   com proporção fixa (is-4by3), sem impedir distorção; sem isso a capa
+   do jogo esticava pra caber na caixa. */
+.card :global(.image.is-4by3 img) {
+  object-fit: cover;
+}
+
+/* Fonte fluida: escala com a largura da tela em vez de saltar em um
+   breakpoint fixo, então fica pequena de verdade em celulares estreitos
+   (2 colunas) e não passa de um teto em telas maiores. */
+.card :global(.title.is-5) {
+  font-family: var(--font-pixel);
+  font-size: clamp(var(--fs-2xs), 1.8vw, var(--fs-xs));
+  line-height: 1.5;
+  color: var(--retro-cyan);
+  margin-bottom: 0.4rem !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card :global(.subtitle.is-6) {
+  font-size: clamp(var(--fs-xs), 2vw, var(--fs-lg));
+  color: var(--retro-yellow);
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .card :global(.card-content) {
+    padding: 0.5rem;
+  }
+}
