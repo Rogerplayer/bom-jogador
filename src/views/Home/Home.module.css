@@ -1,0 +1,13 @@
+.title {
+  font-family: var(--font-pixel);
+  font-size: clamp(var(--fs-lg), 4vw, var(--fs-2xl));
+  line-height: 1.6;
+  color: var(--retro-cyan);
+  text-shadow: 2px 0 var(--retro-magenta), -2px 0 var(--retro-cyan);
+}
+
+.subtitle {
+  font-size: clamp(var(--fs-xs), 2vw, var(--fs-base));
+  line-height: 1.9;
+  color: #a9c7d6;
+}
