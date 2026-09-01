@@ -1,8 +1,9 @@
 # bom-jogador
 
-Trabalho acadêmico da disciplina de **Arquitetura de Front End**, do curso de
-pós-graduação em **Arquitetura de Software Distribuído**. Aplicação React +
-Vite usada para praticar a organização de um projeto front-end em camadas.
+Projeto pessoal de estudo, aplicando os conceitos aprendidos na disciplina de
+**Arquitetura de Front End**, do curso de pós-graduação em **Arquitetura de
+Software Distribuído**. Aplicação React + Vite usada para praticar a
+organização de um projeto front-end em camadas.
 
 > Projeto de estudo — sem fins comerciais.
 

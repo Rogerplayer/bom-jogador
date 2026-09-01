@@ -8,11 +8,11 @@ function About() {
     <DocPage title='Sobre o "Bom Jogador"'>
       <DocSection heading="O projeto">
         <p>
-          Bom Jogador é um trabalho acadêmico da disciplina de Arquitetura de
-          Front End, do curso de pós-graduação em Arquitetura de Software
-          Distribuído. A proposta original do professor era listar filmes
-          populares e seus detalhes usando uma API gratuita. A ideia aqui foi
-          ir além: trocar filmes por{' '}
+          Bom Jogador é um projeto pessoal de estudo, aplicando os conceitos
+          aprendidos na disciplina de Arquitetura de Front End, do curso de
+          pós-graduação em Arquitetura de Software Distribuído. O exercício
+          proposto em aula era listar filmes populares e seus detalhes usando
+          uma API gratuita. A ideia aqui foi ir além: trocar filmes por{' '}
           <strong>jogos de videogame</strong>, usando a API da RAWG, e somar
           funcionalidades como marcar jogos como favoritos e "estou jogando".
         </p>
