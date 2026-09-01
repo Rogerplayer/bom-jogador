@@ -75,7 +75,6 @@ function About() {
 
       <DocSection heading="O que vem por aí">
         <ul className={styles.roadmap}>
-          <li>Você configurar sua própria chave RAWG direto pela interface</li>
           <li>Favoritar jogos e marcar "estou jogando", salvo no seu navegador</li>
           <li>Busca de jogos por nome</li>
           <li>Exportar e importar seus dados em um arquivo .json</li>
@@ -100,6 +99,16 @@ function About() {
           </ExternalLink>
           . Veja também os <Link to="/termos">Termos de Uso</Link> e o{' '}
           <Link to="/manual">Manual</Link>.
+        </p>
+        <p className={styles.credits}>
+          Código-fonte no{' '}
+          <ExternalLink
+            href="https://github.com/Rogerplayer/bom-jogador"
+            title="Repositório do Bom Jogador no GitHub"
+          >
+            github.com/Rogerplayer/bom-jogador
+          </ExternalLink>
+          .
         </p>
       </DocSection>
     </DocPage>
