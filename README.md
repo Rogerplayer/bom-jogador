@@ -8,9 +8,12 @@ organização de um projeto front-end em camadas.
 
 ## Stack
 
-- React 19
+- React 19 + React Router 7
 - Vite 8
+- Bulma 1 (CSS)
+- localForage (persistência local, ainda não usada nas telas)
 - ESLint 10 (flat config)
+- [RAWG Video Games Database API](https://rawg.io/apidocs)
 
 ## Scripts
 
@@ -22,17 +25,35 @@ npm run preview  # pré-visualiza o build
 npm run lint     # eslint
 ```
 
+## Rotas
+
+| Rota          | Tela                                                    |
+| ------------- | -------------------------------------------------------- |
+| `/`           | Jogos populares (lista, cards)                            |
+| `/games/:id`  | Detalhes de um jogo                                       |
+| `/buscar`     | Busca por nome — ainda "em construção"                    |
+| `/favoritos`  | Favoritos — ainda "em construção"                          |
+| `/jogando`    | Estou Jogando — ainda "em construção"                      |
+| `/sobre`      | Sobre o projeto                                            |
+| `/manual`     | Manual de uso                                              |
+| `/termos`     | Termos de Uso                                              |
+
+## Identidade visual
+
+Tema dark retro-gamer: fonte pixel (Press Start 2P, via Google Fonts),
+scanlines de CRT, paleta ciano/magenta sobre azul-marinho. Cada componente
+usa seu próprio CSS Module (`Componente.module.css`), escopado — só o
+`index.css` guarda o que é realmente global (reset, tema, tipografia).
+
 ## Configuração da chave de API (RAWG)
 
-A aplicação usa a [RAWG Video Games Database API](https://rawg.io/apidocs). Ela
-é **no-backend**: a chave de API não fica salva no código nem enviada a
-nenhum servidor próprio.
+A aplicação é **no-backend**: a chave de API não fica salva no código nem
+enviada a nenhum servidor próprio.
 
-- **Uso normal do app**: o próprio usuário informa sua chave RAWG pela tela de
-  Setup do app; ela é validada e guardada localmente no navegador (IndexedDB,
-  via `localForage`). Nada disso vai para o repositório.
-- **Ambiente de desenvolvimento (opcional)**: para não precisar colar a chave
-  toda vez ao rodar `npm run dev`, crie um arquivo `.env.local` na raiz do
+- **Hoje**: não existe ainda uma tela de Setup para o usuário final colar a
+  própria chave pela interface (é um próximo passo do projeto). O único jeito
+  de rodar a aplicação localmente é via `.env.local`, abaixo.
+- **Ambiente de desenvolvimento**: crie um arquivo `.env.local` na raiz do
   projeto (baseado em [`.env.local.example`](.env.local.example)):
 
   ```bash
@@ -60,8 +81,12 @@ O código em `src/` é organizado por responsabilidade:
 | ------------- | ------------------------------------------------------------ |
 | `components/` | Componentes de UI reutilizáveis (apresentacionais)          |
 | `views/`      | Telas ligadas a rotas; orquestram components, hooks, services |
-| `hooks/`      | Custom hooks (lógica de estado/efeito reutilizável)         |
-| `services/`   | Comunicação externa (HTTP/API, localStorage)                |
+| `hooks/`      | Custom hooks (lógica de estado/efeito reutilizável)          |
+| `services/`   | Comunicação externa (HTTP/API, storage)                     |
 | `config/`     | Constantes e configuração da aplicação                      |
 
 Fluxo: `views → hooks → services → config`.
+
+Cada componente/view fica em sua própria pasta (`GameCard/GameCard.jsx` +
+`GameCard.module.css`, por exemplo), com o CSS escopado via CSS Modules —
+evita conflito de nomes de classe entre componentes.
