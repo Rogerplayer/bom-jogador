@@ -15,6 +15,26 @@
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>"
     />
     <title>Bom Jogador</title>
+    <!--
+      Contraparte do redirecionamento em public/404.html — decodifica a URL
+      de volta pra rota real antes do React Router montar. Só entra em ação
+      quando hospedado no GitHub Pages; não afeta o dev local nem a lógica
+      do app. Padrão: https://github.com/rafgraph/spa-github-pages
+    -->
+    <script type="text/javascript">
+      ;(function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&')
+            })
+            .join('?')
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash)
+        }
+      })(window.location)
+    </script>
   </head>
   <body>
     <div id="root"></div>

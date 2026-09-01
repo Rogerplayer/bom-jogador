@@ -32,6 +32,8 @@ function Footer() {
           <Link to="/manual">Manual</Link>
           {' · '}
           <Link to="/termos">Termos de Uso</Link>
+          {' · '}
+          <Link to="/setup">Configurar chave</Link>
         </p>
       </div>
     </footer>

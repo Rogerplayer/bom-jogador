@@ -75,7 +75,6 @@ function About() {
 
       <DocSection heading="O que vem por aí">
         <ul className={styles.roadmap}>
-          <li>Você configurar sua própria chave RAWG direto pela interface</li>
           <li>Favoritar jogos e marcar "estou jogando", salvo no seu navegador</li>
           <li>Busca de jogos por nome</li>
           <li>Exportar e importar seus dados em um arquivo .json</li>

@@ -6,8 +6,10 @@ import About from './views/About/About'
 import Terms from './views/Terms/Terms'
 import Manual from './views/Manual/Manual'
 import ComingSoon from './views/ComingSoon/ComingSoon'
+import Setup from './views/Setup/Setup'
 import Footer from './components/Footer/Footer'
 import RainbowText from './components/RainbowText/RainbowText'
+import RequireApiKey from './components/RequireApiKey/RequireApiKey'
 import styles from './App.module.css'
 
 const NAV_ITEMS = [
@@ -82,35 +84,56 @@ function App() {
       <main className={`section ${styles.main}`}>
         <div className="container">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/games/:id" element={<GameDetails />} />
+            <Route
+              path="/"
+              element={
+                <RequireApiKey>
+                  <Home />
+                </RequireApiKey>
+              }
+            />
+            <Route
+              path="/games/:id"
+              element={
+                <RequireApiKey>
+                  <GameDetails />
+                </RequireApiKey>
+              }
+            />
             <Route
               path="/buscar"
               element={
-                <ComingSoon
-                  title="Buscar"
-                  description="Busca de jogos por nome, com paginação ou scroll infinito. Ainda não implementado."
-                />
+                <RequireApiKey>
+                  <ComingSoon
+                    title="Buscar"
+                    description="Busca de jogos por nome, com paginação ou scroll infinito. Ainda não implementado."
+                  />
+                </RequireApiKey>
               }
             />
             <Route
               path="/favoritos"
               element={
-                <ComingSoon
-                  title="Favoritos"
-                  description="Seus jogos favoritos, salvos localmente via localForage. Ainda não implementado."
-                />
+                <RequireApiKey>
+                  <ComingSoon
+                    title="Favoritos"
+                    description="Seus jogos favoritos, salvos localmente via localForage. Ainda não implementado."
+                  />
+                </RequireApiKey>
               }
             />
             <Route
               path="/jogando"
               element={
-                <ComingSoon
-                  title="Estou Jogando"
-                  description="Os jogos que você está jogando agora, salvos localmente via localForage. Ainda não implementado."
-                />
+                <RequireApiKey>
+                  <ComingSoon
+                    title="Estou Jogando"
+                    description="Os jogos que você está jogando agora, salvos localmente via localForage. Ainda não implementado."
+                  />
+                </RequireApiKey>
               }
             />
+            <Route path="/setup" element={<Setup />} />
             <Route path="/sobre" element={<About />} />
             <Route path="/termos" element={<Terms />} />
             <Route path="/manual" element={<Manual />} />

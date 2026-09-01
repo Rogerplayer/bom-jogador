@@ -19,11 +19,10 @@ function Manual() {
 
       <DocSection heading="2. Configure a chave no app">
         <p>
-          A tela onde você vai colar sua chave direto na interface ainda está
-          em construção (veja o roadmap na página <Link to="/sobre">Sobre</Link>
-          ). Por enquanto, quem está rodando o projeto localmente para
-          desenvolvimento pode usar a própria chave via variável de ambiente
-          — instruções no README do projeto.
+          Vá em <Link to="/setup">Configurar chave</Link> (link disponível no
+          rodapé de qualquer página), cole sua chave e
+          confirme. Ela é validada com um pedido de teste à RAWG e salva só
+          no seu navegador — nunca passa por nenhum servidor.
         </p>
       </DocSection>
 
