@@ -110,7 +110,7 @@ function App() {
                   <span className={styles.profileIcon} aria-hidden="true">
                     👤
                   </span>
-                  {nickname || 'Perfil'}
+                  <span className={styles.profileLabel}>{nickname || 'Perfil'}</span>
                 </Link>
               </div>
             )}
