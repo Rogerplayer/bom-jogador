@@ -12,7 +12,7 @@ import Footer from './components/Footer/Footer'
 import RainbowText from './components/RainbowText/RainbowText'
 import RequireApiKey from './components/RequireApiKey/RequireApiKey'
 import { useApiKey } from './hooks/useApiKey'
-import { getNickname } from './services/profileService'
+import { getNickname, NICKNAME_CHANGED_EVENT } from './services/profileService'
 import styles from './App.module.css'
 
 const NAV_ITEMS = [
@@ -33,11 +33,18 @@ function App() {
 
   // Regra de negócio: itens de perfil só existem com a chave RAWG
   // configurada — ela funciona como um "login". Refaz a busca do nickname
-  // a cada troca de rota pra refletir o que foi salvo no Perfil.
+  // a cada troca de rota e também quando ele é salvo na própria página de
+  // Perfil (sem isso, salvar não atualizava a navbar até navegar).
   useEffect(() => {
-    if (hasKey) {
+    if (!hasKey) return
+
+    function refreshNickname() {
       getNickname().then((value) => setNickname(value || ''))
     }
+
+    refreshNickname()
+    window.addEventListener(NICKNAME_CHANGED_EVENT, refreshNickname)
+    return () => window.removeEventListener(NICKNAME_CHANGED_EVENT, refreshNickname)
   }, [hasKey, location.pathname])
 
   return (
