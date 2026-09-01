@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Routes, Route, NavLink, Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Routes, Route, NavLink, Link, useLocation } from 'react-router-dom'
 import Home from './views/Home/Home'
 import GameDetails from './views/GameDetails/GameDetails'
 import About from './views/About/About'
@@ -11,6 +11,8 @@ import Profile from './views/Profile/Profile'
 import Footer from './components/Footer/Footer'
 import RainbowText from './components/RainbowText/RainbowText'
 import RequireApiKey from './components/RequireApiKey/RequireApiKey'
+import { useApiKey } from './hooks/useApiKey'
+import { getNickname } from './services/profileService'
 import styles from './App.module.css'
 
 const NAV_ITEMS = [
@@ -25,6 +27,18 @@ const NAV_ITEMS = [
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const { hasKey } = useApiKey()
+  const [nickname, setNickname] = useState('')
+  const location = useLocation()
+
+  // Regra de negócio: itens de perfil só existem com a chave RAWG
+  // configurada — ela funciona como um "login". Refaz a busca do nickname
+  // a cada troca de rota pra refletir o que foi salvo no Perfil.
+  useEffect(() => {
+    if (hasKey) {
+      getNickname().then((value) => setNickname(value || ''))
+    }
+  }, [hasKey, location.pathname])
 
   return (
     <>
@@ -79,6 +93,20 @@ function App() {
                 </NavLink>
               ))}
             </div>
+            {hasKey && (
+              <div className="navbar-end">
+                <Link
+                  to="/perfil"
+                  className={`navbar-item ${styles.profileLink}`}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span className={styles.profileIcon} aria-hidden="true">
+                    👤
+                  </span>
+                  {nickname || 'Perfil'}
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </nav>

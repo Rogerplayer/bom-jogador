@@ -21,6 +21,61 @@
   text-shadow: 2px 0 var(--retro-magenta), -2px 0 var(--retro-cyan);
 }
 
+.greeting {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background: #0b1c22;
+  border: 2px solid var(--retro-yellow);
+}
+
+.greetingIcon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.greetingName {
+  font-family: var(--font-pixel);
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  color: var(--retro-yellow);
+  text-shadow: 1px 0 var(--retro-magenta), -1px 0 var(--retro-yellow);
+}
+
+.row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.row .input {
+  flex: 1;
+}
+
+.saveButton {
+  flex: none;
+  font-family: var(--font-pixel);
+  text-transform: uppercase;
+  font-size: var(--fs-2xs);
+  padding: 0 1rem;
+  background: linear-gradient(90deg, var(--retro-magenta), var(--retro-cyan));
+  color: #04141a;
+  border: 2px solid var(--retro-cyan);
+  cursor: pointer;
+}
+
+.saveButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.saved {
+  margin-top: 0.5rem;
+  font-size: var(--fs-2xs);
+  color: var(--retro-yellow);
+}
+
 .label {
   display: block;
   font-family: var(--font-pixel);
