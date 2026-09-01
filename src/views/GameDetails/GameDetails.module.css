@@ -1,0 +1,146 @@
+.screen {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(5, 6, 8, 0.55);
+  border: 3px solid var(--retro-cyan);
+  border-radius: 4px;
+  box-shadow:
+    inset 0 0 0 1px #04262e,
+    0 0 32px -6px rgba(47, 208, 255, 0.55),
+    0 0 60px -20px rgba(255, 47, 176, 0.4);
+  color: #d8f7ff;
+  padding: 1.5rem;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--retro-cyan);
+  text-decoration: none;
+  font-family: var(--font-pixel);
+  font-size: var(--fs-2xs);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.backLink:hover {
+  text-shadow: 0 0 8px var(--retro-cyan);
+}
+
+/* Mobile-first: imagem em banner (16:9) empilhada acima do texto. A
+   partir de 700px, vira um grid de 2 colunas (imagem à esquerda, info à
+   direita) — princípio de Gutenberg: a imagem "abre" a leitura antes do
+   texto/CTA, como em páginas de loja de jogos (Steam, PS Store). */
+.layout {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.cover {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: 2px solid var(--retro-cyan);
+  border-radius: 2px;
+  margin-bottom: 1.25rem;
+}
+
+.info {
+  min-width: 0;
+}
+
+@media (min-width: 700px) {
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(240px, 320px) 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .cover {
+    aspect-ratio: 3 / 4;
+    height: 100%;
+    margin-bottom: 0;
+    position: sticky;
+    top: 1.5rem;
+  }
+}
+
+.title {
+  font-family: var(--font-pixel);
+  text-transform: uppercase;
+  font-size: clamp(var(--fs-lg), 4vw, var(--fs-2xl));
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  margin: 0 0 1rem;
+  text-shadow: 2px 0 var(--retro-magenta), -2px 0 var(--retro-cyan);
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  font-family: var(--font-pixel);
+  font-size: var(--fs-xs);
+  color: var(--retro-yellow);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.tags span {
+  font-family: var(--font-pixel);
+  font-size: var(--fs-2xs);
+  text-transform: uppercase;
+  padding: 0.35rem 0.55rem;
+  background: #0b1c22;
+  border: 1px solid var(--retro-cyan);
+  color: var(--retro-cyan);
+  border-radius: 0;
+}
+
+.description {
+  font-size: var(--fs-sm);
+  line-height: 1.9;
+  color: #c9f0fa;
+  margin-bottom: 1.5rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.actions button {
+  font-family: var(--font-pixel);
+  text-transform: uppercase;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+  padding: 0.75rem 1rem;
+  border-radius: 0;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.actions button:first-child {
+  background: #0b1c22;
+  color: var(--retro-cyan);
+  border: 2px solid var(--retro-cyan);
+}
+
+.actions button:last-child {
+  background: linear-gradient(90deg, var(--retro-magenta), var(--retro-cyan));
+  color: #04141a;
+  border: 2px solid var(--retro-cyan);
+}

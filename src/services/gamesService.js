@@ -17,3 +17,19 @@ export async function getPopularGames() {
   const data = await response.json()
   return data.results
 }
+
+export async function getGameDetails(id) {
+  const apiKey = await getApiKey()
+  if (!apiKey) {
+    throw new Error('Nenhuma chave de API da RAWG configurada')
+  }
+
+  const url = `${RAWG_BASE_URL}/games/${id}?key=${encodeURIComponent(apiKey)}`
+  const response = await fetch(url)
+
+  if (!response.ok) {
+    throw new Error(`Falha ao buscar detalhes do jogo (status ${response.status})`)
+  }
+
+  return response.json()
+}
