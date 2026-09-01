@@ -90,3 +90,13 @@ Fluxo: `views → hooks → services → config`.
 Cada componente/view fica em sua própria pasta (`GameCard/GameCard.jsx` +
 `GameCard.module.css`, por exemplo), com o CSS escopado via CSS Modules —
 evita conflito de nomes de classe entre componentes.
+
+## Licença
+
+O código deste repositório está sob a [licença MIT](LICENSE).
+
+Essa licença cobre apenas o **código-fonte** da aplicação. Os dados e
+imagens de jogos exibidos pelo app vêm da [RAWG Video Games Database
+API](https://rawg.io/apidocs) em tempo real (nunca ficam armazenados neste
+repositório) e permanecem sujeitos aos [termos de uso da RAWG](https://rawg.io/tos_api) —
+veja também a página `/termos` do app.
