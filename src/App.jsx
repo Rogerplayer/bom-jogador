@@ -7,6 +7,7 @@ import Terms from './views/Terms/Terms'
 import Manual from './views/Manual/Manual'
 import ComingSoon from './views/ComingSoon/ComingSoon'
 import Setup from './views/Setup/Setup'
+import Profile from './views/Profile/Profile'
 import Footer from './components/Footer/Footer'
 import RainbowText from './components/RainbowText/RainbowText'
 import RequireApiKey from './components/RequireApiKey/RequireApiKey'
@@ -134,6 +135,14 @@ function App() {
               }
             />
             <Route path="/setup" element={<Setup />} />
+            <Route
+              path="/perfil"
+              element={
+                <RequireApiKey>
+                  <Profile />
+                </RequireApiKey>
+              }
+            />
             <Route path="/sobre" element={<About />} />
             <Route path="/termos" element={<Terms />} />
             <Route path="/manual" element={<Manual />} />

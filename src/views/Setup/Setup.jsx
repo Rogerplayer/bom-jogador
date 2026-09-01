@@ -1,16 +1,23 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { validateApiKey, saveApiKey } from '../../services/apiKeyService'
+import { validateApiKey, saveApiKey, getApiKey, clearApiKey } from '../../services/apiKeyService'
 import { useApiKey } from '../../hooks/useApiKey'
 import ExternalLink from '../../components/ExternalLink/ExternalLink'
+import MaskedKey from '../../components/MaskedKey/MaskedKey'
 import styles from './Setup.module.css'
 
 function Setup() {
+  const [currentKey, setCurrentKey] = useState(undefined)
+  const [editing, setEditing] = useState(false)
   const [apiKey, setApiKey] = useState('')
   const [status, setStatus] = useState('idle')
   const { refresh } = useApiKey()
   const navigate = useNavigate()
   const location = useLocation()
+
+  useEffect(() => {
+    getApiKey().then(setCurrentKey)
+  }, [])
 
   async function handleSubmit(event) {
     event.preventDefault()
@@ -26,6 +33,43 @@ function Setup() {
     refresh()
     setStatus('valid')
     navigate(location.state?.from ?? '/', { replace: true })
+  }
+
+  async function handleRemove() {
+    await clearApiKey()
+    refresh()
+    setCurrentKey(null)
+    setEditing(true)
+  }
+
+  if (currentKey === undefined) {
+    return <progress className="progress is-small is-primary" max="100" />
+  }
+
+  if (currentKey && !editing) {
+    return (
+      <div className={styles.screen}>
+        <h1 className={styles.title}>Sua chave RAWG</h1>
+        <p className={styles.description}>
+          Essa chave está salva só no seu navegador (nunca em servidor nenhum).
+        </p>
+
+        <div className={styles.field}>
+          <MaskedKey value={currentKey} />
+        </div>
+
+        <button className={styles.button} type="button" onClick={() => setEditing(true)}>
+          Trocar chave
+        </button>
+        <button
+          className={`${styles.button} ${styles.buttonDanger}`}
+          type="button"
+          onClick={handleRemove}
+        >
+          Remover minha chave
+        </button>
+      </div>
+    )
   }
 
   return (

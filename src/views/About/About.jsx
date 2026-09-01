@@ -100,6 +100,16 @@ function About() {
           . Veja também os <Link to="/termos">Termos de Uso</Link> e o{' '}
           <Link to="/manual">Manual</Link>.
         </p>
+        <p className={styles.credits}>
+          Código-fonte no{' '}
+          <ExternalLink
+            href="https://github.com/Rogerplayer/bom-jogador"
+            title="Repositório do Bom Jogador no GitHub"
+          >
+            github.com/Rogerplayer/bom-jogador
+          </ExternalLink>
+          .
+        </p>
       </DocSection>
     </DocPage>
   )

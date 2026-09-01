@@ -21,21 +21,6 @@
   text-shadow: 2px 0 var(--retro-magenta), -2px 0 var(--retro-cyan);
 }
 
-.description {
-  font-size: var(--fs-sm);
-  line-height: 1.9;
-  color: #c9f0fa;
-  margin-bottom: 1.25rem;
-}
-
-.description a {
-  color: var(--retro-cyan);
-}
-
-.field {
-  margin-bottom: 1rem;
-}
-
 .label {
   display: block;
   font-family: var(--font-pixel);
@@ -43,6 +28,10 @@
   text-transform: uppercase;
   color: var(--retro-yellow);
   margin-bottom: 0.5rem;
+}
+
+.field {
+  margin-bottom: 1.25rem;
 }
 
 .input {
@@ -60,44 +49,20 @@
   outline-offset: 2px;
 }
 
-.button {
-  width: 100%;
+.note {
+  font-size: var(--fs-sm);
+  line-height: 1.9;
+  color: #c9f0fa;
+  margin-bottom: 1.25rem;
+}
+
+.note a {
+  color: var(--retro-cyan);
+}
+
+.link {
   font-family: var(--font-pixel);
+  font-size: var(--fs-xs);
   text-transform: uppercase;
-  font-size: var(--fs-xs);
-  letter-spacing: 0.04em;
-  padding: 0.9rem 1rem;
-  border-radius: 0;
-  background: linear-gradient(90deg, var(--retro-magenta), var(--retro-cyan));
-  color: #04141a;
-  border: 2px solid var(--retro-cyan);
-  cursor: pointer;
-}
-
-.button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.button + .button {
-  margin-top: 0.75rem;
-}
-
-.buttonDanger {
-  background: #0b1c22;
-  color: var(--retro-magenta);
-  border-color: var(--retro-magenta);
-}
-
-.status {
-  margin-top: 1rem;
-  font-size: var(--fs-xs);
-}
-
-.statusError {
-  color: var(--retro-magenta);
-}
-
-.statusOk {
-  color: var(--retro-yellow);
+  color: var(--retro-cyan);
 }
