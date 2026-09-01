@@ -12,9 +12,10 @@ dist
 dist-ssr
 *.local
 
-# Claude Code (não versionar)
+# Claude Code / diário de bordo (não versionar)
 .claude/
 CLAUDE.md
+CONTEXT.md
 
 # Editor directories and files
 .vscode/*
