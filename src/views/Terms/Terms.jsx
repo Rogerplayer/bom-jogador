@@ -7,7 +7,8 @@ function Terms() {
       <DocSection heading="Sobre este documento">
         <p>
           O Bom Jogador é um projeto acadêmico, sem fins comerciais, feito
-          para uma disciplina de Arquitetura de Software. Este texto explica,
+          para a disciplina de Arquitetura de Front End (pós-graduação em
+          Arquitetura de Software Distribuído). Este texto explica,
           de forma simples, como usamos os dados da RAWG e por que cada
           pessoa usa sua própria chave de API — não é um contrato legal
           formal.
