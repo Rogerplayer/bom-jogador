@@ -17,6 +17,7 @@ dist-ssr
 CLAUDE.md
 CONTEXT.md
 docs/
+.okf-kit
 
 # Editor directories and files
 .vscode/*
